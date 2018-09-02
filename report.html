@@ -1,0 +1,39 @@
+<div class="container-fluid" ng-controller="list_ctrl">
+	<div class="row-fluid">
+		<div class="span12" >
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							历史记录
+						</th>
+					</tr>
+					<td><strong>编号</strong></td>
+					<td><strong>链接</strong></td>
+					<td><strong>时间</strong></td>
+				</thead>
+				<tbody>
+					<label for=""></label><input type="text" class="form-control" ng-model="keyword" placeholder="输入url的关键字搜索"><br>
+					<button class="btn btn-primary" ng-click="search()" style="position: absolute;right: 30px;">搜索</button>
+					<button class="btn btn-primary" ng-click="refresh()" style="position: absolute; left: 130px;">刷新</button>
+					<button class="btn btn-primary" ng-click="excute()" style="position: absolute; left: 200px;">执行一次</button>
+					<a ui-sref="setting" style="position: absolute; top:183px;left: 430px;">配置定时巡检</a>
+					<button class="btn btn-primary" ng-click="scheduleExecute()" style="position: absolute; left: 300px;">{{tips}}</button>
+					<tr ng-repeat="report in reports">
+						<td>{{report.rid}}</td>
+						<td style="width: 65%">
+							<a ng-href="{{report.URL}}">{{report.URL}}</a>
+						</td>
+						<td>{{report.REPORT_TIME}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<span><strong>{{count}}</strong>份报告</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>{{msg}}</span>
+			<ul class="pagination pagination-lg" ng-if="show">
+			    <li><a href="#">&laquo;</a></li>
+			    <li ng-repeat="pageNum in pageNums" style="margin-right: 5px;" ng-click="changePage($event)"><a href="#">{{pageNum}}</a></li>
+			    <li ><a href="#">&raquo;</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
